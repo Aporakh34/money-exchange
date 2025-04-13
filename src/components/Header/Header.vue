@@ -55,7 +55,6 @@
       </div>
     </div>
 
-    <!-- Mobile navigation -->
     <div class="md:hidden border-t border-gray-100">
       <div class="container flex justify-between px-4 py-2">
         <router-link

@@ -6,13 +6,11 @@
 import { ref, computed, onMounted, provide } from 'vue';
 import { fetchCurrencyRates, SUPPORTED_CURRENCIES, type CurrencyRates } from '../../services/currencyService';
 
-// Create the state
 const baseCurrency = ref(localStorage.getItem("baseCurrency") || 'USD');
 const rates = ref<CurrencyRates>({});
 const isLoading = ref(true);
 const error = ref<string | null>(null);
 
-// Function to refresh rates
 const refreshRates = async () => {
   isLoading.value = true;
   error.value = null;
@@ -28,7 +26,6 @@ const refreshRates = async () => {
   }
 };
 
-// Update base currency and save to localStorage
 const setBaseCurrency = (currency: string) => {
   if (SUPPORTED_CURRENCIES.includes(currency)) {
     baseCurrency.value = currency;
@@ -37,10 +34,8 @@ const setBaseCurrency = (currency: string) => {
   }
 };
 
-// Load rates on mount
 onMounted(refreshRates);
 
-// Provide the state and methods to descendant components
 provide('currency', {
   baseCurrency,
   rates,

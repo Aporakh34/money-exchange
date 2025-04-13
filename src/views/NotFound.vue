@@ -12,5 +12,4 @@
 </template>
 
 <script setup lang="ts">
-// Placeholder script setup
 </script>

@@ -1,4 +1,3 @@
-<!-- filepath: c:\Users\porak\Desktop\test2\testtask1\src\views\Convert.vue -->
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
 import { useCurrency } from '../composables/useCurrency';
@@ -9,7 +8,6 @@ import { ArrowLeftRight } from 'lucide-vue-next';
 
 const { rates, isLoading, baseCurrency } = useCurrency();
 
-// Инициализируем локальное состояние fromCurrency значением глобальной валюты
 const fromCurrency = ref(baseCurrency.value);
 const toCurrency = ref('EUR');
 
@@ -30,8 +28,6 @@ const getExchangeRate = () => {
   return rate.toFixed(4);
 };
 
-// Синхронизируем fromCurrency с глобальной валютой при изменении baseCurrency,
-// только если пользователь ещё не изменил локальное значение
 watch(
   () => baseCurrency.value,
   (newVal, oldVal) => {
@@ -76,7 +72,6 @@ const swapCurrencies = () => {
         <div class="flex items-center justify-between">
           <div class="w-[45%]">
             <label class="text-sm font-medium text-gray-700 mb-1 block">From</label>
-            <!-- Локальный селект для "From". Если он не изменялся вручную, его значение обновится из header -->
             <CurrencyDropdown 
               :value="fromCurrency" 
               @change="setFromCurrency" 
